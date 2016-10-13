@@ -1,0 +1,147 @@
+OCTAVE/MATLAB:
+
+basic operations:
+  + -> addtion
+  - -> subtraction
+  * -> multiplication
+  / -> division
+  ^ -> exponent
+
+logical operations:
+  1 == 2
+  1 ~= 2 (not equals)
+  1 && 0 (and)
+  1 || 0 (or)
+
+  1 MEANS TRUE
+  0 MEANS FALSE
+
+variable:
+  -no need to declare
+
+  a = 3 (prints 3)
+  a = 3; (doesn't print 3)
+  b = 'hi'
+  b (will print "b = 'hi'")
+
+
+printing:
+  a = pi -> (a = (3.1416))
+  disp(a) -> (3.1416)
+  disp(sprintf('2 decimals: %0.2f', a)) -> ('2 decimanls: 3.1416')
+
+matricies:
+  A = [1 2; 3 4; 5 6] -> A is a [3, 2] matrix
+  v = [1 2 3] -> v is a [1, 3] vector
+  v = [1:0.1:2]-> [1, 1.1, 1.3, 1.4, 1.5 ... 2]
+  v = 1:6 -> [1 2 3 4 5 6]
+  C = 2*ones(2,3) -> [2, 2, 2; 2, 2, 2]
+  w = ones(1,3) -> [1 1 1]
+  w = zeros(1,3) -> [0 0 0]
+  w = rand(1,3) -> random #s
+  eye(4) -> 4x4 identity matrix
+  A(3,2) -> returns element at location 3,2
+  A(2,:) -> returns every element in second row
+  A(:,2) -> returns every element in second column
+  A(:,2) = [10, 11, 12] -> replaces second column of A
+  A = [A, [100; 101; 102]] -> will append a new column to A
+  A(:) -> returns all elements of A in a single vector
+  C = [A B] -> C is a concatanation of A and B as a (2, 4)
+  C = [A; B] -> C is a concatanation of A and B as a (4, 2)
+
+
+
+plotting:
+  hist() -> histogram
+  plot(x,y) -> a plot of this data
+  xlabel('label')
+  legend('legend', 'legend')
+  title('title')
+  print -dpng 'myPlot.png' -> saves the plot as a png
+  close -> gets rid of plot
+  subplot(1,2,1) -> divides plot into 1x2 grid, accesses first element
+  axis([.5 1 -1 1]) -> sets range of variables x x y y
+  imagesc(A), colorbar, colormap gray
+
+
+size(matrix) -> returns [rows columns] as a 2x1 matrix
+size(matrix, 1) -> returns number of rows
+size(matrix, 2) -> returns number of columns
+
+length(matrix) -> returns the longer dimension (typically only applied to a vector)
+
+data:
+  load file.dat -> loads the file for use
+  who -> shows variables in current scope
+  whos -> detailed view of variables in current scope
+  v = priceY(1:10) -> sets v to be the first 10 items in priceY
+  save hello.mat v -> creates new file 'hello.mat' that contains variable v
+  save hello.txt v ascii -> creates new file 'hello.txtt' that contains variable v and is ascii encoded (human readable)
+  clear v -> deletes variable v
+  clear -> deletes all variables
+
+
+
+computation:
+  A * C -> Matrix multiplication
+  A .* C -> dot multiplication (element-wise)
+  A .^ 2 -> element-wise squaring
+  1 ./ v -> element-wise recipricol of v
+  log(v) -> element-wise logarithm (base e)
+  abs(v) -> element-wise absolute value
+  -v -> element-wise -1 * element
+  v + ones(length(v),1) -> add 1 to each element of v
+  v + 1 -> add 1 to each eleme-nt of v
+  A' -> A transpose
+  max(A) -> returns max element
+  [val, ind] = max(A) -> returns [value, index] of max(A)
+  a < 3 -> returns a matrix with an element-wise comparison 1 = true, 0 = false
+  magic(A) -> returns a matrix where column, row, diagonal all add up to the same thing
+  [r,c] = find(a >= 7) -> returns two vectors where r is the row, c is the column where the element of a is >= 7
+  rand(3) -> 3x3 matrix of random numbers
+  max(A,[],1) -> column-wise maxium [returns a vector' of max's]
+  max(A,[],1) -> row-wise maxium [returns a vector of max's]
+  sum(A) -> sum of the elements in each column of A, as a row vector
+  sum(A,1) -> sum of each column
+  sum(A,2) -> sum of each row
+  A .* eye(9) -> wipes out everything except for the diagonals
+  pinv(A) -> returns inverse of A
+
+control statements:
+  for i=1:10, -> for (i = 1; i < 10; i++) { -> you need to put "end" at the end of the loop
+    has both break and continue statements
+  while i <= 5, -> while(i <= 5) { -> you need to put "end" at the end of the loop
+  if i == 6, -> if (i === 6) { -> you need to put "end" at the end of the loop
+  elseif i == 5, -> else if(i == 5) {
+  else -> else
+
+
+function definition:
+  function y = squareThisNumber(x)
+  y = x ^ 2
+    ----------> this will return one value (x^2)
+
+  function [y1, y2] = squareAndCubeThisNumber(x)
+  y1 = x ^ 2
+  y2 = x ^ 3
+    ----------> this will return two different values(x^2, x^3)
+
+
+vectorization:
+
+
+
+
+
+
+
+
+function J = costFunction(X, y, theta)
+
+m = size(X,1)
+predictions = X*theta;
+sqrErrors = (predictions-y).^2
+
+J = 1/2 * sum(sqrErrors)
+
+prediction = theta' * x;
